@@ -39,10 +39,11 @@ const Header = () => {
                             {item.name}
                         </Link>
                     ))}
-                    <a href="/login">
-                        <button className="bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-600 text-white font-bold px-5 py-2 rounded-full shadow-md hover:from-cyan-600 hover:to-indigo-700 hover:shadow-lg hover:scale-105 transition-all duration-300">
+                    <a href="/login" className="bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-600 text-white font-bold px-5 py-2 rounded-full shadow-md hover:from-cyan-600 hover:to-indigo-700 hover:shadow-lg hover:scale-105 transition-all duration-300">
+                        {/* <button className="bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-600 text-white font-bold px-5 py-2 rounded-full shadow-md hover:from-cyan-600 hover:to-indigo-700 hover:shadow-lg hover:scale-105 transition-all duration-300">
                             Sign In
-                        </button>
+                        </button> */}
+                        Sign In
                     </a>
                 </nav>
 
