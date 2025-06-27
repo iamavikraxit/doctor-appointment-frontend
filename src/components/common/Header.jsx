@@ -10,7 +10,7 @@ const Header = () => {
         { name: 'Home', path: '/' },
         { name: 'Shop', path: '/shop' },
         { name: 'Categories', path: '/categories' },
-        { 
+        {
             name: (
                 <span className="relative">
                     Cart
@@ -43,21 +43,21 @@ const Header = () => {
                 </div>
 
                 {/* Desktop Navigation */}
-                <nav className="hidden md:flex items-center space-x-6">
+                <nav className="hidden md:flex items-center space-x-4">
                     {navItems.map((item) => (
                         <Link
                             key={item.path}
                             to={item.path}
-                            className={`font-semibold transition-all duration-300 ${
-                                currentPath === item.path
-                                    ? "bg-pink-100 text-pink-700 px-4 py-1.5 rounded-sm"
+                            className={`font-semibold px-4 py-1.5 rounded-sm transition-all duration-300 ${currentPath === item.path
+                                    ? "bg-pink-100 text-pink-700"
                                     : "text-gray-800 hover:text-pink-600 hover:scale-105"
-                            }`}
+                                }`}
                         >
                             {item.name}
                         </Link>
                     ))}
                 </nav>
+
 
                 {/* Mobile Menu Toggle */}
                 <div className="md:hidden">
@@ -88,16 +88,15 @@ const Header = () => {
                             key={item.path}
                             to={item.path}
                             onClick={() => setMenuOpen(false)}
-                            className={`block w-full text-center font-semibold py-2 rounded transition-all duration-300 ${
-                                currentPath === item.path
+                            className={`block w-full text-center font-semibold py-2 rounded transition-all duration-300 ${currentPath === item.path
                                     ? "bg-pink-100 text-pink-700 shadow ring-2 ring-pink-300"
                                     : "text-gray-800 hover:text-pink-600 hover:bg-pink-50"
-                            }`}
+                                }`}
                         >
                             {item.name}
                         </Link>
                     ))}
-                    
+
                 </div>
             )}
         </header>
