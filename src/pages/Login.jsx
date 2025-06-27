@@ -3,7 +3,7 @@ import React from 'react';
 
 const Login = () => {
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-100 via-blue-200 to-blue-300 px-4 py-10 sm:py-16">
+        <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4 py-10 sm:py-16">
             <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-10 bg-white/70 backdrop-blur-md border border-blue-100 rounded-3xl shadow-2xl p-6 sm:p-10 transition-all">
 
                 {/* Left - Welcome Text */}

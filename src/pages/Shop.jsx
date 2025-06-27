@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '../components/Layout';
 
-const Doctors = () => {
+const Shop = () => {
     const doctors = [
         { id: 1, name: "Dr. Ethan Walker", specialty: "Neurologist", location: "Boston" },
         { id: 2, name: "Dr. Maya Patel", specialty: "Oncologist", location: "Seattle" },
@@ -55,4 +55,4 @@ const Doctors = () => {
     );
 };
 
-export default Doctors;
+export default Shop;

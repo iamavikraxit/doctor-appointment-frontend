@@ -4,7 +4,7 @@ import Footer from '../components/common/Footer';
 
 const Layout = ({ children }) => {
     return (
-        <div className="min-h-screen flex flex-col bg-gradient-to-r from-blue-100 via-blue-200 to-blue-300 overflow-hidden">
+        <div className="min-h-screen flex flex-col bg-gray-100 overflow-hidden">
 
             {/* Fixed Header */}
             <header className="fixed top-0 left-0 w-full z-50">
@@ -17,7 +17,7 @@ const Layout = ({ children }) => {
             </main>
 
             {/* Fixed Footer */}
-            <footer className="fixed bottom-0 left-0 w-full z-50">
+            <footer className=" bottom-0 left-0 w-full z-50">
                 <Footer />
             </footer>
         </div>
