@@ -14,7 +14,11 @@ const Login = () => {
                     <p className="text-gray-700 text-base sm:text-lg">
                         Sign in to your account to shop your favorite products and manage your orders.
                     </p>
-                    <p className="text-sm text-gray-500 italic">We’re glad to see you again.</p>
+                    <ul className="text-sm text-gray-500 space-y-2 pt-2">
+                        <li>✅ Exclusive member discounts</li>
+                        <li>✅ Fast & easy checkout</li>
+                        <li>✅ Track your orders live</li>
+                    </ul>
                 </div>
 
                 {/* Right - Login Form */}
@@ -63,6 +67,14 @@ const Login = () => {
                             🔐 Login
                         </button>
                     </form>
+
+                    {/* Registration Link */}
+                    <p className="mt-6 text-center text-sm text-gray-600">
+                        Don't have an account?{' '}
+                        <a href="/signup" className="text-pink-600 font-semibold hover:underline">
+                            Sign up here
+                        </a>
+                    </p>
                 </div>
             </div>
         </div>

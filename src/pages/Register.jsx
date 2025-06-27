@@ -84,6 +84,14 @@ const Register = () => {
                             🚀 Create Account
                         </button>
                     </form>
+
+                    {/* Login Link */}
+                    <p className="mt-6 text-center text-sm text-gray-600">
+                        Have an account?{' '}
+                        <a href="/login" className="text-pink-600 font-semibold hover:underline">
+                            Sign in here
+                        </a>
+                    </p>
                 </div>
             </div>
         </div>
