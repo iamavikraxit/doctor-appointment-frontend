@@ -10,13 +10,23 @@ const Header = () => {
         { name: 'Home', path: '/' },
         { name: 'Shop', path: '/shop' },
         { name: 'Categories', path: '/categories' },
-        { name: 'Cart', path: '/cart' },
+        { 
+            name: (
+                <span className="relative">
+                    Cart
+                    <span className="absolute -top-2 -right-3 bg-pink-500 text-white text-xs rounded-full px-1">
+                        3
+                    </span>
+                </span>
+            ),
+            path: '/cart'
+        },
         { name: 'Contact', path: '/contact' },
         { name: 'Sign In', path: '/login' },
     ];
 
     return (
-        <header className="bg-gray-100 px-6 sm:px-10 py-3 shadow-xs fixed top-0 left-0 w-full z-50">
+        <header className="bg-pink-50 px-6 sm:px-10 py-3 shadow-xs fixed top-0 left-0 w-full z-50">
             <div className="flex items-center justify-between lg:px-40">
                 {/* Logo */}
                 <div className="flex items-center">
