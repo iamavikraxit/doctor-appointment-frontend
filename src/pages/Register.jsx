@@ -7,20 +7,32 @@ const Register = () => {
 
                 {/* Left Side - Welcome Text */}
                 <div className="flex items-center h-full">
-                    <div className="space-y-6 text-center lg:text-left">
-                        <h2 className="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-pink-600 drop-shadow mb-4">
-                            Create Your Account
+                    <div className="space-y-8 text-center lg:text-left max-w-lg">
+                        <h2 className="text-4xl sm:text-5xl font-extrabold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-pink-600 drop-shadow-sm">
+                            Join Us Today
                         </h2>
-                        <p className="text-gray-700 text-base sm:text-lg">
-                            Join our shopping community today and unlock exclusive deals, early access, and more.
+                        <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
+                            Become a member and enjoy exclusive perks, priority access to deals, and a seamless shopping journey.
                         </p>
-                        <ul className="mt-6 space-y-3 text-gray-600 text-sm sm:text-base">
-                            <li>✅ Enjoy member-only discounts</li>
-                            <li>✅ Get fast checkout experience</li>
-                            <li>✅ Track and manage your orders</li>
-                        </ul>
+                        <div className="bg-white/60 backdrop-blur rounded-xl shadow-md border border-gray-100 p-6">
+                            <ul className="space-y-4 text-gray-700 text-sm sm:text-base font-medium">
+                                <li className="flex items-start gap-2">
+                                    <span className="text-green-500 text-lg">✅</span>
+                                    <span>Exclusive member-only discounts</span>
+                                </li>
+                                <li className="flex items-start gap-2">
+                                    <span className="text-green-500 text-lg">✅</span>
+                                    <span>Fast & secure checkout experience</span>
+                                </li>
+                                <li className="flex items-start gap-2">
+                                    <span className="text-green-500 text-lg">✅</span>
+                                    <span>Easy order tracking & management</span>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
+
 
                 {/* Right Side - Registration Form */}
                 <div className="bg-white/90 backdrop-blur-md border border-pink-100 rounded-2xl shadow-xl p-6 sm:p-8 w-full">
@@ -29,30 +41,34 @@ const Register = () => {
                     </h2>
 
                     <form className="space-y-6">
-                        <div>
-                            <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
-                            <input
-                                type="text"
-                                id="name"
-                                name="name"
-                                className="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-pink-500 outline-none shadow-sm transition-all"
-                                placeholder="Jane Doe"
-                                required
-                            />
+                        {/* Row with Name and Email */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    className="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-pink-500 outline-none shadow-sm transition-all"
+                                    placeholder="Jane Doe"
+                                    required
+                                />
+                            </div>
+
+                            <div>
+                                <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    className="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-pink-500 outline-none shadow-sm transition-all"
+                                    placeholder="jane@example.com"
+                                    required
+                                />
+                            </div>
                         </div>
 
-                        <div>
-                            <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                className="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-pink-500 outline-none shadow-sm transition-all"
-                                placeholder="jane@example.com"
-                                required
-                            />
-                        </div>
-
+                        {/* Password */}
                         <div>
                             <label htmlFor="password" className="block text-sm font-semibold text-gray-700 mb-2">Password</label>
                             <input
@@ -65,6 +81,7 @@ const Register = () => {
                             />
                         </div>
 
+                        {/* Confirm Password */}
                         <div>
                             <label htmlFor="confirmPassword" className="block text-sm font-semibold text-gray-700 mb-2">Confirm Password</label>
                             <input
@@ -84,6 +101,7 @@ const Register = () => {
                             🚀 Create Account
                         </button>
                     </form>
+
 
                     {/* Login Link */}
                     <p className="mt-6 text-center text-sm text-gray-600">

@@ -14,11 +14,22 @@ const Login = () => {
                     <p className="text-gray-700 text-base sm:text-lg">
                         Sign in to your account to shop your favorite products and manage your orders.
                     </p>
-                    <ul className="text-sm text-gray-500 space-y-2 pt-2">
-                        <li>✅ Exclusive member discounts</li>
-                        <li>✅ Fast & easy checkout</li>
-                        <li>✅ Track your orders live</li>
-                    </ul>
+                    <div className="bg-white/60 backdrop-blur rounded-xl shadow-md border border-gray-100 p-6">
+                        <ul className="space-y-4 text-gray-700 text-sm sm:text-base font-medium">
+                            <li className="flex items-start gap-2">
+                                <span className="text-green-500 text-lg">✅</span>
+                                <span>Exclusive member-only discounts</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                                <span className="text-green-500 text-lg">✅</span>
+                                <span>Fast & secure checkout experience</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                                <span className="text-green-500 text-lg">✅</span>
+                                <span>Easy order tracking & management</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
 
                 {/* Right - Login Form */}
