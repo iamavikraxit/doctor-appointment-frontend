@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 const Header = () => {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [searchOpen, setSearchOpen] = useState(false);
     const location = useLocation();
     const currentPath = location.pathname;
+
+    const searchRef = useRef(null);
 
     const navItems = [
         { name: 'Home', path: '/' },
@@ -16,48 +19,130 @@ const Header = () => {
         { name: 'Sign In', path: '/login' },
     ];
 
+    const toggleSearch = () => {
+        setSearchOpen(prev => !prev);
+        setMenuOpen(false);
+    };
+
+    const handleSearchInputChange = (e) => {
+        console.log("Search query:", e.target.value);
+    };
+
+    const handleSearchSubmit = (e) => {
+        if (e.key === 'Enter') {
+            alert(`Searching for: ${e.target.value}`);
+            setSearchOpen(false);
+        }
+    };
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (searchOpen && searchRef.current && !searchRef.current.contains(event.target)) {
+                setSearchOpen(false);
+            }
+        };
+
+        if (searchOpen) {
+            document.addEventListener("mousedown", handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [searchOpen]);
 
     return (
-        <header className="bg-pink-50 px-6 sm:px-10 py-3 shadow-xs fixed top-0 left-0 w-full z-50">
-            <div className="flex items-center justify-between lg:px-40">
+        <header className="bg-gray-900 px-6 sm:px-10 py-4 shadow-lg fixed top-0 left-0 w-full z-50">
+            <div className="flex items-center justify-between">
                 {/* Logo */}
                 <div className="flex items-center">
-                    <a href="/" className="flex items-center space-x-2">
+                    <Link to="/" className="flex items-center space-x-2">
                         <img
                             src="https://assets.designhill.com/design-blog/wp-content/uploads/2023/12/5.jpg"
-                            alt="Logo"
-                            className="h-8 w-8 bg-gray-100 object-cover rounded"
+                            alt="NetVerse Logo"
+                            className="h-9 w-9 object-cover rounded-md"
                         />
-                        <span className="text-xl font-extrabold hidden sm:flex bg-gradient-to-r from-purple-600 to-pink-400 bg-clip-text text-transparent">
+                        <span className="text-2xl font-extrabold hidden sm:flex bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
                             NetVerse
                         </span>
-                    </a>
+                    </Link>
                 </div>
 
-                {/* Desktop Navigation */}
-                <nav className="hidden md:flex items-center space-x-3">
-                    {navItems.map((item) => (
-                        <Link
-                            key={item.path}
-                            to={item.path}
-                            className={`font-semibold px-4 py-1.5 rounded-sm transition-all duration-300 ${currentPath === item.path
-                                ? "bg-pink-100 text-pink-700"
-                                : "text-gray-800 hover:text-pink-600 hover:scale-105"
-                                }`}
+                {/* Desktop Navigation, Search Button, and Search Input */}
+                <div className="hidden md:flex items-center space-x-6" ref={searchRef}>
+                    {/* Conditional rendering for Desktop Search: Input field or Search button */}
+                    {searchOpen ? (
+                        <input
+                            type="text"
+                            placeholder="Search movies, TV shows..."
+                            className="px-4 py-2 rounded-md bg-gray-700 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-400 w-64 transition-all duration-300"
+                            onKeyDown={handleSearchSubmit}
+                            onChange={handleSearchInputChange}
+                            autoFocus
+                        />
+                    ) : (
+                        <button
+                            onClick={toggleSearch}
+                            className="p-2 rounded-full bg-gray-800 text-gray-300 hover:text-teal-400 hover:bg-gray-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-teal-400"
+                            aria-label="Search"
                         >
-                            {item.name}
-                        </Link>
-                    ))}
-                </nav>
+                            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </button>
+                    )}
+
+                    {/* Desktop Navigation (always visible) */}
+                    <nav className="flex items-center space-x-3">
+                        {navItems.map((item) => (
+                            <Link
+                                key={item.path}
+                                to={item.path}
+                                // ** MODIFIED STYLES FOR DESKTOP MENU ITEMS **
+                                className={`font-semibold px-3 py-2 transition-all duration-300 border-b-2 border-transparent
+                                ${currentPath === item.path
+                                        ? "text-teal-400 border-teal-400" // Active: teal text and bottom border
+                                        : "text-gray-300 hover:text-teal-300 hover:border-teal-300" // Inactive: gray text, hover teal text and border
+                                    }`}
+                            >
+                                {item.name}
+                            </Link>
+                        ))}
+                    </nav>
+                </div>
 
 
-                {/* Mobile Menu Toggle */}
-                <div className="md:hidden">
+                {/* Mobile Menu Toggle and Search Button/Input */}
+                <div className="md:hidden flex items-center space-x-3" ref={searchRef}>
+                    {/* Mobile Search Input Field or Button */}
+                    {searchOpen ? (
+                        <input
+                            type="text"
+                            placeholder="Search..."
+                            className="px-3 py-2 rounded-md bg-gray-700 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-400 w-full max-w-xs transition-all duration-300"
+                            onKeyDown={handleSearchSubmit}
+                            onChange={handleSearchInputChange}
+                            autoFocus
+                        />
+                    ) : (
+                        <button
+                            onClick={toggleSearch}
+                            className="p-2 rounded-full text-gray-300 hover:text-teal-400 focus:outline-none"
+                            aria-label="Search"
+                        >
+                            <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </button>
+                    )}
+
+                    {/* Mobile Menu Toggle (always visible, alongside search if not open) */}
                     <button
-                        onClick={() => setMenuOpen(!menuOpen)}
-                        className="text-pink-700 focus:outline-none"
+                        onClick={() => setMenuOpen(prev => !prev)}
+                        className="text-gray-300 hover:text-teal-400 focus:outline-none"
+                        aria-label={menuOpen ? "Close menu" : "Open menu"}
                     >
-                        <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                        <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                             <path
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
@@ -72,23 +157,24 @@ const Header = () => {
                 </div>
             </div>
 
-            {/* Mobile Nav */}
+            {/* Mobile Navigation (collapses below header) */}
             {menuOpen && (
-                <div className="md:hidden mt-4 space-y-2">
+                <div className="md:hidden mt-4 space-y-3 p-4 bg-gray-800 rounded-lg shadow-xl">
                     {navItems.map((item) => (
                         <Link
                             key={item.path}
                             to={item.path}
                             onClick={() => setMenuOpen(false)}
-                            className={`block w-full text-center font-semibold py-2 rounded transition-all duration-300 ${currentPath === item.path
-                                ? "bg-pink-100 text-pink-700 shadow ring-2 ring-pink-300"
-                                : "text-gray-800 hover:text-pink-600 hover:bg-pink-50"
+                            // ** MODIFIED STYLES FOR MOBILE MENU ITEMS **
+                            className={`block w-full text-center font-semibold py-2.5 rounded-md transition-all duration-300
+                            ${currentPath === item.path
+                                    ? "bg-gray-700 text-teal-400"
+                                    : "text-gray-200 hover:text-teal-300 hover:bg-gray-700"
                                 }`}
                         >
                             {item.name}
                         </Link>
                     ))}
-
                 </div>
             )}
         </header>
