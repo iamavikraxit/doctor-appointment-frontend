@@ -75,7 +75,7 @@ const Header = () => {
                         <input
                             type="text"
                             placeholder="Search movies, TV shows..."
-                            className="px-4 py-2 rounded-md bg-gray-100 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-400 w-64 transition-all duration-300"
+                            className="px-4 py-2 rounded-md bg-gray-100 text-gray-8ffgdgf00 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 w-64 transition-all duration-300"
                             onKeyDown={handleSearchSubmit}
                             onChange={handleSearchInputChange}
                             autoFocus
@@ -83,10 +83,10 @@ const Header = () => {
                     ) : (
                         <button
                             onClick={toggleSearch}
-                            className="p-2 rounded-full bg-gray-100 text-gray-300 hover:text-teal-400 hover:bg-gray-200 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-teal-400"
+                            className="p-2 rounded-full bg-gray-50 text-gray-300 hover:text-teal-400 hover:bg-gray-200 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-teal-400"
                             aria-label="Search"
                         >
-                            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                            <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                             </svg>
                         </button>
@@ -98,10 +98,10 @@ const Header = () => {
                             <Link
                                 key={item.path}
                                 to={item.path}
-                                className={`font-semibold px-3 py-2 transition-all duration-300 border-b-2 border-transparent
+                                className={`px-3 py-2 transition-all duration-300 border-b-2 border-transparent
                                 ${currentPath === item.path
-                                        ? "text-teal-400 border-teal-400"
-                                        : "text-gray-300 hover:text-teal-300 hover:border-teal-300"
+                                        ? "font-bold text-gray-600 border-gray-400"
+                                        : "font-semibold text-gray-600 hover:text-gray-400 hover:border-gray-300"
                                     }`}
                             >
                                 {item.name}
