@@ -52,7 +52,7 @@ const Header = () => {
     }, [searchOpen]);
 
     return (
-        <header className="bg-gray-900 px-6 sm:px-10 py-4 shadow-lg fixed top-0 left-0 w-full z-50">
+        <header className="bg-transparent px-6 sm:px-10 py-4 shadow-lg fixed top-0 left-0 w-full z-50 backdrop-filter backdrop-blur-md">
             <div className="flex items-center justify-between">
                 {/* Logo */}
                 <div className="flex items-center">
@@ -75,7 +75,7 @@ const Header = () => {
                         <input
                             type="text"
                             placeholder="Search movies, TV shows..."
-                            className="px-4 py-2 rounded-md bg-gray-700 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-400 w-64 transition-all duration-300"
+                            className="px-4 py-2 rounded-md bg-gray-100 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-400 w-64 transition-all duration-300"
                             onKeyDown={handleSearchSubmit}
                             onChange={handleSearchInputChange}
                             autoFocus
@@ -83,7 +83,7 @@ const Header = () => {
                     ) : (
                         <button
                             onClick={toggleSearch}
-                            className="p-2 rounded-full bg-gray-800 text-gray-300 hover:text-teal-400 hover:bg-gray-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-teal-400"
+                            className="p-2 rounded-full bg-gray-100 text-gray-300 hover:text-teal-400 hover:bg-gray-200 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-teal-400"
                             aria-label="Search"
                         >
                             <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -98,11 +98,10 @@ const Header = () => {
                             <Link
                                 key={item.path}
                                 to={item.path}
-                                // ** MODIFIED STYLES FOR DESKTOP MENU ITEMS **
                                 className={`font-semibold px-3 py-2 transition-all duration-300 border-b-2 border-transparent
                                 ${currentPath === item.path
-                                        ? "text-teal-400 border-teal-400" // Active: teal text and bottom border
-                                        : "text-gray-300 hover:text-teal-300 hover:border-teal-300" // Inactive: gray text, hover teal text and border
+                                        ? "text-teal-400 border-teal-400"
+                                        : "text-gray-300 hover:text-teal-300 hover:border-teal-300"
                                     }`}
                             >
                                 {item.name}
@@ -165,7 +164,6 @@ const Header = () => {
                             key={item.path}
                             to={item.path}
                             onClick={() => setMenuOpen(false)}
-                            // ** MODIFIED STYLES FOR MOBILE MENU ITEMS **
                             className={`block w-full text-center font-semibold py-2.5 rounded-md transition-all duration-300
                             ${currentPath === item.path
                                     ? "bg-gray-700 text-teal-400"
