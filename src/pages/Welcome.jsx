@@ -77,7 +77,6 @@ const Welcome = () => {
                     </div>
                 </div>
             </section>
-
         </Layout>
     );
 };
