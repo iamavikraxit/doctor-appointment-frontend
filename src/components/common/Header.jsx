@@ -15,7 +15,6 @@ const Header = () => {
         { name: 'Movies', path: '/movies' },
         { name: 'New & Popular', path: '/new-popular' },
         { name: 'My List', path: '/my-list' },
-        { name: 'Browse by Genre', path: '/genres' },
         { name: 'Sign In', path: '/login' },
     ];
 
