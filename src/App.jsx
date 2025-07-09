@@ -5,6 +5,7 @@ import Welcome from './pages/Welcome.jsx'
 import Contact from './pages/Contact.jsx'
 import Shop from './pages/Shop.jsx'
 import Register from './pages/Register.jsx'
+import Dashboard from './pages/backend/Dashboard.jsx'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Register />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>
     </>
