@@ -1,6 +1,6 @@
 import { Menu, LogOut, User, Search, UserCircle, Settings } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
-import { Link, useLocation } from 'react-router-dom';
+
 
 const Navbar = ({ setSidebarOpen, sidebarCollapsed, setSidebarCollapsed }) => {
 
@@ -8,8 +8,8 @@ const Navbar = ({ setSidebarOpen, sidebarCollapsed, setSidebarCollapsed }) => {
     const [showSearch, setShowSearch] = useState(false);
     const searchRef = useRef(null);
 
-    const location = useLocation();
-    const currentPath = location.pathname;
+    
+    
 
     // Autofocus when search becomes visible
     useEffect(() => {
