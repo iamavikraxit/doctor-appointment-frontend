@@ -7,7 +7,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 const AuthenticatedLayout = ({ children }) => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
-    const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+    const [sidebarCollapsed, setSidebarCollapsed] = useState(true); // collapsed by default
 
     const location = useLocation();
     const currentPath = location.pathname;
@@ -31,14 +31,16 @@ const AuthenticatedLayout = ({ children }) => {
             <div className="flex flex-1 relative overflow-hidden">
                 {/* Sidebar (desktop + tablet) */}
                 <aside
-                    className={`hidden md:flex flex-col bg-white/80 backdrop-blur-md border-r border-slate-200 shadow-md transition-all duration-300 ease-in-out 
+                    onMouseEnter={() => setSidebarCollapsed(false)}
+                    onMouseLeave={() => setSidebarCollapsed(true)}
+                    className={`hidden md:flex flex-col bg-white/80 backdrop-blur-md border-r border-slate-200 shadow-md transition-all duration-300 ease-in-out
                         ${sidebarCollapsed ? 'w-20' : 'w-64'} px-4 py-6 space-y-6`}
                 >
                     <h2 className="text-base text-gray-600 font-bold tracking-wide">
                         {!sidebarCollapsed ? 'Menus' : ''}
                     </h2>
                     <nav className="flex flex-col space-y-1">
-                        {menuItems.map(({ label, icon: Icon, path, hover }) => {
+                        {menuItems.map(({ label, icon, path, hover }) => {
                             const isActive = currentPath === path;
 
                             return (
@@ -51,7 +53,9 @@ const AuthenticatedLayout = ({ children }) => {
                                         ${!isActive && hover}
                                     `}
                                 >
-                                    <Icon className={`w-5 h-5 group-hover:scale-110 transition-transform ${isActive ? 'text-fuchsia-600' : ''}`} />
+                                    {React.createElement(icon, {
+                                        className: `w-5 h-5 group-hover:scale-110 transition-transform ${isActive ? 'text-fuchsia-600' : ''}`,
+                                    })}
                                     {!sidebarCollapsed && <span className="text-sm">{label}</span>}
                                 </Link>
                             );
@@ -78,7 +82,7 @@ const AuthenticatedLayout = ({ children }) => {
                                 </button>
                             </div>
                             <nav className="flex flex-col space-y-1">
-                                {menuItems.map(({ label, icon: Icon, path, hover }) => {
+                                {menuItems.map(({ label, path, hover, icon }) => {
                                     const isActive = currentPath === path;
 
                                     return (
@@ -90,7 +94,7 @@ const AuthenticatedLayout = ({ children }) => {
                                                 ${!isActive && hover}
                                             `}
                                         >
-                                            <Icon className={`w-5 h-5 ${isActive ? 'text-fuchsia-600' : ''}`} />
+                                            {React.createElement(icon, { className: `w-5 h-5 ${isActive ? 'text-fuchsia-600' : ''}` })}
                                             <span className="text-sm font-medium">{label}</span>
                                         </Link>
                                     );
